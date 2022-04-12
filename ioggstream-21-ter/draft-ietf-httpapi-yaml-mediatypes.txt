@@ -5,9 +5,9 @@
 HTTPAPI                                                         R. Polli
 Internet-Draft     Digital Transformation Department, Italian Government
 Intended status: Informational                                  E. Wilde
-Expires: 7 October 2022                                            Axway
+Expires: 14 October 2022                                           Axway
                                                                   E. Aro
-                                                            5 April 2022
+                                                           12 April 2022
 
 
                             YAML Media Types
@@ -46,7 +46,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 7 October 2022.
+   This Internet-Draft will expire on 14 October 2022.
 
 Copyright Notice
 
@@ -120,8 +120,8 @@ Table of Contents
 
 2.1.  Media Type application/yaml
 
-   The media type for YAML text is application/yaml; the following
-   information serves as the registration form for this media type.
+   The following information serves as the registration form for the
+   application/yaml media type.
 
    Type name:  application
 
@@ -141,7 +141,12 @@ Table of Contents
 
    Applications that use this media type:  HTTP
 
-   Fragment identifier considerations:  None
+   Fragment identifier considerations:  The fragment identifier is
+      parsed as if it were a YAML alias node, but without a leading *
+      indicator.  For example, in YAML 1.2, this means that it
+      designates a node which has a correspondingly named anchor.  If
+      multiple nodes would match a fragment identifier, the first such
+      match is selected.
 
    Additional information:
 
@@ -180,13 +185,21 @@ Table of Contents
 
    Encoding considerations:  see Section 2.1
 
-   Fragment identifier considerations:  Differently from application/
-      yaml, there is no fragment identification syntax defined for
-      +yaml.
+   Fragment identifier considerations:  The syntax and semantics of
+      fragment identifiers specified for +yaml SHOULD be as specified
+      for Section 2.1 The syntax and semantics for fragment identifiers
+      for a specific xxx/yyy+yaml SHOULD be processed as follows:
 
-      A specific xxx/yyy+yaml media type needs to define the syntax and
-      semantics for fragment identifiers because the ones in Section 2.1
-      do not apply unless explicitly expressed.
+      1.  For cases defined in +yaml, where the fragment identifier
+          resolves per the +yaml rules, then process as specified in
+          +yaml.
+
+      2.  For cases defined in +yaml, where the fragment identifier does
+          not resolve per the +yaml rules, then process as specified in
+          xxx/yyy+yaml.
+
+      3.  For cases not defined in +yaml, then process as specified in
+          xxx/yyy+yaml.
 
    Interoperability considerations:  See Section 2.1
 
