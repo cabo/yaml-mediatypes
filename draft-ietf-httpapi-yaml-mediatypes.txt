@@ -392,9 +392,10 @@ Table of Contents
               <https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-
               semantics-19>.
 
-   [YAML]     Oren Ben-Kiki, Clark Evans, and Ingy dot Net, "YAML Ain't
-              Markup Language Version 1.2", 1 October 2021,
-              <https://yaml.org/spec/1.2/spec.html>.
+   [YAML]     Oren Ben-Kiki, Clark Evans, Ingy dot Net, Tina Müller,
+              Pantelis Antoniou, Eemeli Aro, and Thomas Smith, "YAML
+              Ain't Markup Language Version 1.2", 1 October 2021,
+              <https://yaml.org/spec/1.2.2/>.
 
 Appendix A.  Acknowledgements
 
