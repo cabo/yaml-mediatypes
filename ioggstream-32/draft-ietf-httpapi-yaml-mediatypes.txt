@@ -5,9 +5,10 @@
 HTTPAPI                                                         R. Polli
 Internet-Draft     Digital Transformation Department, Italian Government
 Intended status: Informational                                  E. Wilde
-Expires: 14 October 2022                                           Axway
+Expires: 14 November 2022                                          Axway
                                                                   E. Aro
-                                                           12 April 2022
+                                                                 Mozilla
+                                                             13 May 2022
 
 
                             YAML Media Types
@@ -46,7 +47,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 14 October 2022.
+   This Internet-Draft will expire on 14 November 2022.
 
 Copyright Notice
 
@@ -66,6 +67,7 @@ Table of Contents
 
    1.  Introduction
      1.1.  Notational Conventions
+     1.2.  Fragment identification
    2.  Media Type registrations
      2.1.  Media Type application/yaml
      2.2.  The +yaml Structured Syntax Suffix
@@ -113,6 +115,46 @@ Table of Contents
    The terms "content", "content negotiation", "resource", and "user
    agent" in this document are to be interpreted as in [SEMANTICS].
 
+   The terms "fragment" and "fragment identifier" in this document are
+   to be interpreted as in [URI].
+
+   The terms "node", "anchor" and "named anchor" in this document are to
+   be intepreded as in [YAML].
+
+1.2.  Fragment identification
+
+   This section describes how to use named anchors (see Section 3.2.2.2
+   of [YAML]) as fragment identifiers to designate nodes.
+
+   A YAML named anchor can be represented in a URI fragment identifier
+   by encoding it into octects using UTF-8 [UTF-8], while percent-
+   encoding those characters not allowed by the fragment rule in
+   Section 3.5 of [URI].
+
+   If multiple nodes would match a fragment identifier, the first such
+   match is selected.
+
+   Users concerned with interoperability of fragment identifiers:
+
+   *  SHOULD limit named anchors to a set of characters that do not
+      require encoding to be expressed as URI fragment identifiers: this
+      is always possible since named anchors are a serialization detail;
+
+   *  SHOULD NOT use a named anchor that matches multiple nodes.
+
+   In the example resource below, the URL file.yaml#foo references the
+   anchor foo pointing to the node with value scalar; whereas the URL
+   file.yaml#bar references the anchor bar pointing to the node with
+   value [ some, sequence, items ].
+
+    %YAML 1.2
+    ---
+    one: &foo scalar
+    two: &bar
+      - some
+      - sequence
+      - items
+
 2.  Media Type registrations
 
    This section describes the information required to register the above
@@ -120,8 +162,8 @@ Table of Contents
 
 2.1.  Media Type application/yaml
 
-   The following information serves as the registration form for the
-   application/yaml media type.
+   The media type for YAML text is application/yaml; the following
+   information serves as the registration form for this media type.
 
    Type name:  application
 
@@ -137,16 +179,11 @@ Table of Contents
 
    Interoperability considerations:  see Section 3 of this document
 
-   Published specification:  this document
+   Published specification:  [YAML]
 
    Applications that use this media type:  HTTP
 
-   Fragment identifier considerations:  The fragment identifier is
-      parsed as if it were a YAML alias node, but without a leading *
-      indicator.  For example, in YAML 1.2, this means that it
-      designates a node which has a correspondingly named anchor.  If
-      multiple nodes would match a fragment identifier, the first such
-      match is selected.
+   Fragment identifier considerations:  see Section 1.2
 
    Additional information:
 
@@ -185,21 +222,13 @@ Table of Contents
 
    Encoding considerations:  see Section 2.1
 
-   Fragment identifier considerations:  The syntax and semantics of
-      fragment identifiers specified for +yaml SHOULD be as specified
-      for Section 2.1 The syntax and semantics for fragment identifiers
-      for a specific xxx/yyy+yaml SHOULD be processed as follows:
+   Fragment identifier considerations:  Differently from application/
+      yaml, there is no fragment identification syntax defined for
+      +yaml.
 
-      1.  For cases defined in +yaml, where the fragment identifier
-          resolves per the +yaml rules, then process as specified in
-          +yaml.
-
-      2.  For cases defined in +yaml, where the fragment identifier does
-          not resolve per the +yaml rules, then process as specified in
-          xxx/yyy+yaml.
-
-      3.  For cases not defined in +yaml, then process as specified in
-          xxx/yyy+yaml.
+      A specific xxx/yyy+yaml media type needs to define the syntax and
+      semantics for fragment identifiers because the ones in Section 2.1
+      do not apply unless explicitly expressed.
 
    Interoperability considerations:  See Section 2.1
 
@@ -404,9 +433,19 @@ Table of Contents
               <https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-
               semantics-19>.
 
-   [YAML]     Oren Ben-Kiki, Clark Evans, and Ingy dot Net, "YAML Ain't
-              Markup Language Version 1.2", 1 October 2021,
-              <https://yaml.org/spec/1.2/spec.html>.
+   [URI]      Berners-Lee, T., Fielding, R., and L. Masinter, "Uniform
+              Resource Identifier (URI): Generic Syntax", STD 66,
+              RFC 3986, DOI 10.17487/RFC3986, January 2005,
+              <https://www.rfc-editor.org/rfc/rfc3986>.
+
+   [UTF-8]    Yergeau, F., "UTF-8, a transformation format of ISO
+              10646", STD 63, RFC 3629, DOI 10.17487/RFC3629, November
+              2003, <https://www.rfc-editor.org/rfc/rfc3629>.
+
+   [YAML]     Oren Ben-Kiki, Clark Evans, Ingy dot Net, Tina Müller,
+              Pantelis Antoniou, Eemeli Aro, and Thomas Smith, "YAML
+              Ain't Markup Language Version 1.2", 1 October 2021,
+              <https://yaml.org/spec/1.2.2/>.
 
 Appendix A.  Acknowledgements
 
@@ -447,5 +486,6 @@ Authors' Addresses
 
 
    Eemeli Aro
+   Mozilla
    Finland
    Email: eemeli@gmail.com
