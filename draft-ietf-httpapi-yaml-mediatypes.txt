@@ -5,10 +5,10 @@
 HTTPAPI                                                         R. Polli
 Internet-Draft     Digital Transformation Department, Italian Government
 Intended status: Informational                                  E. Wilde
-Expires: 13 November 2022                                          Axway
+Expires: 18 November 2022                                          Axway
                                                                   E. Aro
                                                                  Mozilla
-                                                             12 May 2022
+                                                             17 May 2022
 
 
                             YAML Media Types
@@ -47,7 +47,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 13 November 2022.
+   This Internet-Draft will expire on 18 November 2022.
 
 Copyright Notice
 
@@ -179,7 +179,7 @@ Table of Contents
 
    Interoperability considerations:  see Section 3 of this document
 
-   Published specification:  this document
+   Published specification:  [YAML]
 
    Applications that use this media type:  HTTP
 
