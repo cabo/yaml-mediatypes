@@ -5,13 +5,13 @@
 HTTPAPI                                                         R. Polli
 Internet-Draft     Digital Transformation Department, Italian Government
 Intended status: Informational                                  E. Wilde
-Expires: 18 November 2022                                          Axway
+Expires: 19 November 2022                                          Axway
                                                                   E. Aro
                                                                  Mozilla
-                                                             17 May 2022
+                                                             18 May 2022
 
 
-                            YAML Media Types
+                            YAML Media Type
                    draft-ietf-httpapi-yaml-mediatypes
 
 Abstract
@@ -47,7 +47,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 18 November 2022.
+   This Internet-Draft will expire on 19 November 2022.
 
 Copyright Notice
 
@@ -68,7 +68,7 @@ Table of Contents
    1.  Introduction
      1.1.  Notational Conventions
      1.2.  Fragment identification
-   2.  Media Type registrations
+   2.  Media Type and Structured Syntax Suffix registrations
      2.1.  Media Type application/yaml
      2.2.  The +yaml Structured Syntax Suffix
    3.  Interoperability Considerations
@@ -88,8 +88,8 @@ Table of Contents
 
    YAML [YAML] is a data serialization format that is widely used on the
    Internet, including in the API sector (e.g. see [oas]) but the
-   relevant media type and structured syntax suffix are not registered
-   by IANA.
+   relevant media type and structured syntax suffix previously had not
+   been registered by IANA.
 
    To increase interoperability when exchanging YAML data and leverage
    content negotiation mechanisms when exchanging YAML resources, this
@@ -155,10 +155,10 @@ Table of Contents
       - sequence
       - items
 
-2.  Media Type registrations
+2.  Media Type and Structured Syntax Suffix registrations
 
    This section describes the information required to register the above
-   media types according to [MEDIATYPE]
+   media type according to [MEDIATYPE]
 
 2.1.  Media Type application/yaml
 
@@ -214,7 +214,7 @@ Table of Contents
    structured syntax suffix registration form follows.  See [MEDIATYPE]
    for definitions of each of the registration form headings.
 
-   Name:  YAML Ain't Markup LanguageML (YAML)
+   Name:  YAML Ain't Markup Language (YAML)
 
    +suffix:  +yaml
 
@@ -244,16 +244,16 @@ Table of Contents
 
 3.1.  YAML is an Evolving Language
 
-   YAML is an evolving language and, in time, some features have been
-   added, and others removed.
+   YAML is an evolving language and, over time, some features have been
+   added and others removed.
 
-   While this document is based on a given YAML version [YAML], media
-   types registration does not imply a specific version.  This allows
-   content negotiation of version-independent YAML resources.
+   While this document is based on a given YAML version [YAML], the
+   media type registration does not imply a specific version.  This
+   allows content negotiation of version-independent YAML resources.
 
    Implementers concerned about features related to a specific YAML
-   version can specify it in the documents using the %YAML directive
-   (see Section 6.8.1 of [YAML]).
+   version can specify it in documents using the %YAML directive (see
+   Section 6.8.1 of [YAML]).
 
 3.2.  YAML and JSON
 
@@ -362,7 +362,7 @@ Table of Contents
 
 5.  IANA Considerations
 
-   This specification defines the following new Internet media types
+   This specification defines the following new Internet media type
    [MEDIATYPE].
 
    IANA has updated the "Media Types" registry at
